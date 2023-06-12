@@ -1,0 +1,52 @@
+a {
+    text-decoration: none;
+    color : wheat
+}
+
+.productBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(32, 178, 170, 0.1);
+    border-radius: 10px;
+    border : 1px solid wheat;
+    transition: background-color  0.2s , border  0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    position : relative;
+    max-width: 25rem;
+    min-width: 20%;
+    max-height: 20rem;
+}
+
+.productBox:hover{
+    background-color: rgba(32, 178, 170, 0.5);
+    border : 1px dashed lightseagreen;
+}
+
+.productImage {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+}
+
+.ribbon {
+    width: 3.5rem;
+    font-size: 1.5rem;
+    padding: 4px;
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #ff9800;
+    color: white;
+  }
+
+.productText {
+    color :rgb(0, 0, 0);
+    padding: 1rem;
+}

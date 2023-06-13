@@ -8,9 +8,11 @@ export default function ProductsContainer({data}) {
     const [firstTime, setFirstTime] = useState(true);
     const [timer, setTimer] = useState(1);
     let [seconds, setSeconds] = useState(1);
+    let [repeat, setRepeat] = useState(1);
 
     // To create an array equal to the length of the number of categoryItems
-    const [categoryItems, setCategoryItems] = useState(new Array(data.length).fill([]));
+    const [categoryItems, setCategoryItems] = useState([]);
+    // const [categoryItems, setCategoryItems] = useState(new Array(data.length).fill([]));
 
     // To create an array equal to the length of the number of checkboxes
     const [checkedState, setCheckedState] = useState(
@@ -22,17 +24,17 @@ export default function ProductsContainer({data}) {
             index === position ? !item : item
         );
         setCheckedState(updatedCheckedState);
-        categorySelected()
+        categoryChecked()
     };
     
-    const categorySelected = () => {
+    const categoryChecked = () => {
         return data.map((obj, index) =>
             checkedState[index] && obj.category 
         )
     }
 
-    const itemSelected = () => {
-        return data.filter(obj => categorySelected().includes(obj.category)).map(
+    const categoryCheckedItems = () => {
+        return data.filter(obj => categoryChecked().includes(obj.category)).map(
             category => (
                 category.items
             )
@@ -42,21 +44,21 @@ export default function ProductsContainer({data}) {
     const randomItems = () => {
         let randomNumList = []
         let randomItemsList = []
-        let categoryItemsList = itemSelected().map(
-            category => (
-                category
-            )
-        )
-        
-        itemSelected().map(category => 
-            randomNumList.push(getRandomInt(1, category.length)).toString())
        
-        randomItemsList.push(itemSelected().map(
-            (itemsList, index) => itemsList.filter(item => 
-                item.rank == randomNumList[index])
-        ))
+        for (let index = 0; index < categoryCheckedItems().length; index++) {
 
-        return randomItemsList[0]
+            for (let i = 0; i < repeat; i++) {
+                randomNumList.push(getRandomInt(1, categoryCheckedItems()[index].length)).toString()
+            }
+            randomItemsList.push(
+                categoryCheckedItems()[index].filter(
+                    items => randomNumList.includes(parseInt(items.rank))
+                )
+            )
+            randomNumList = []      
+        }
+        
+        return randomItemsList.flat(1)
     }
 
     function search () {
@@ -82,6 +84,10 @@ export default function ProductsContainer({data}) {
 
     function onTimer(e) {   
         setTimer(e.target.value);
+    }
+
+    function onRepeat(e) {   
+        setRepeat(e.target.value);
     }
 
     
@@ -116,13 +122,9 @@ export default function ProductsContainer({data}) {
         <>
        
         
-        <div className="productsContainer">
-            {categoryItems.map(
-                items => (
-                    items.length > 0 ? 
-                    items.map(item => <ProductBox key={item.id} item = {item} />)
-                    : ""
-                )
+        <div className="productsContainer"> 
+            { categoryItems.length > 0 &&  categoryItems.map(
+                item => <ProductBox key={item.id} item = {item} />
             )}
         </div>
         <div className="buttonsContainer">
@@ -143,14 +145,22 @@ export default function ProductsContainer({data}) {
                     id='timer'
                     name='timer'
                     type='number' 
-                    min = {timer}
+                    min = '1'
                     max = '10'
                     value = {timer}
                     onChange={(e) => onTimer(e)}
                     />
                     <label htmlFor="timer">{`${autoDisplayIsActive ? seconds + " sec" : "Timer"}  ` } </label>
                 </div>
-                
+                <input className={`${autoDisplayIsActive && 'disabled'}`}
+                    id='repeat'
+                    name='repeat'
+                    type='number'
+                    min = '1' 
+                    max = '3'
+                    value = {repeat}
+                    onChange={(e) => onRepeat(e)}
+                    />
             </div>
 
         </div>

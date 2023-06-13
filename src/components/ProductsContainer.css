@@ -190,4 +190,5 @@ input[type=number] {
   align-content: center;
   align-items: center;
   color: rgba(30, 255, 105, 0.5);
+  margin-top: 2rem;
 }

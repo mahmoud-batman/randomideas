@@ -120,8 +120,6 @@ export default function ProductsContainer({data}) {
     return (
         
         <>
-       
-        
         <div className="productsContainer"> 
             { categoryItems.length > 0 &&  categoryItems.map(
                 item => <ProductBox key={item.id} item = {item} />
@@ -129,20 +127,7 @@ export default function ProductsContainer({data}) {
         </div>
         <div className="buttonsContainer">
 
-            <button className={`button search ${autoDisplayIsActive && 'disabled'}`} onClick={() => search()}>
-                <i className="fa fa-search "></i> Search</button> 
-
-           
-            <div className='timerContainer'>
-                <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
-                ${firstTime && 'disabled'}`} 
-                onClick={toggle}>
-                    {console.log()}
-                    &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
-                </button>
-                
-            </div>
-            <div className="timer">
+        <div className="timer">
                 <input className={`${autoDisplayIsActive && 'disabled'}`}
                 id='timer'
                 name='timer'
@@ -165,6 +150,19 @@ export default function ProductsContainer({data}) {
                 />                
                 <b htmlFor="timer">Repeater </b>
             </div>
+           
+            <div className='timerContainer'>
+                <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
+                ${firstTime && 'disabled'}`} 
+                onClick={toggle}>
+                    {console.log()}
+                    &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
+                </button>
+                
+            </div>
+            
+            <button className={`button search ${autoDisplayIsActive && 'disabled'}`} onClick={() => search()}>
+                <i className="fa fa-search "></i> Search</button> 
         </div>
         <div className={`filterGroup ${autoDisplayIsActive && 'disabled hidden'  }  display=hidden`}>
             {data.map((list, index) =>    

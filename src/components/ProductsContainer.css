@@ -182,3 +182,12 @@ input[type=number] {
   margin-left: 2rem;
   border-radius: 10px;
 } 
+
+.timer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: rgba(30, 255, 105, 0.5);
+}

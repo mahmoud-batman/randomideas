@@ -140,18 +140,20 @@ export default function ProductsContainer({data}) {
                     {console.log()}
                     &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
                 </button>
-                <div>
-                    <input className={`${autoDisplayIsActive && 'disabled'}`}
-                    id='timer'
-                    name='timer'
-                    type='number' 
-                    min = '1'
-                    max = '10'
-                    value = {timer}
-                    onChange={(e) => onTimer(e)}
-                    />
-                    <label htmlFor="timer">{`${autoDisplayIsActive ? seconds + " sec" : "Timer"}  ` } </label>
-                </div>
+                
+            </div>
+            <div className="timer">
+                <input className={`${autoDisplayIsActive && 'disabled'}`}
+                id='timer'
+                name='timer'
+                type='number' 
+                min = '1'
+                max = '10'
+                value = {timer}
+                onChange={(e) => onTimer(e)}
+                />
+                <b htmlFor="timer">{`${autoDisplayIsActive ? seconds + " sec" : "Timer"}  ` } </b>
+            
                 <input className={`${autoDisplayIsActive && 'disabled'}`}
                     id='repeat'
                     name='repeat'
@@ -160,9 +162,9 @@ export default function ProductsContainer({data}) {
                     max = '3'
                     value = {repeat}
                     onChange={(e) => onRepeat(e)}
-                    />
+                />                
+                <b htmlFor="timer">Repeater </b>
             </div>
-
         </div>
         <div className={`filterGroup ${autoDisplayIsActive && 'disabled hidden'  }  display=hidden`}>
             {data.map((list, index) =>    

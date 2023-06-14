@@ -156,9 +156,25 @@ export default function ProductsContainer({data}) {
                 item => <ProductBox key={item.id} item = {item} />
             )}
         </div>
+        
         <div className="buttonsContainer">
 
-            <div className="timer">
+            
+           
+            <div className='timerContainer'>
+                <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
+                ${firstTime && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} 
+                onClick={toggle}>
+                    &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
+                </button>
+                <button className={`button fa fa-backward`} onClick={()=> Backward()}></button>
+                <button className={`button fa fa-forward`} onClick={()=> Forward()}></button>
+                <button className={`button search ${!checkedState.includes(true)   && 'disabled'}`} onClick={() => search()}>
+                    <i className={`fa fa-search`}></i> Search</button> 
+            </div>
+            
+        </div>
+        <div className="timer">
                 <input className={`${autoDisplayIsActive && 'disabled'}`}
                 id='timer'
                 name='timer'
@@ -178,19 +194,6 @@ export default function ProductsContainer({data}) {
                     onChange={(e) => onRepeat(e)}
                 />                
                 <b htmlFor="timer">Repeater </b>
-            </div>
-           
-            <div className='timerContainer'>
-                <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
-                ${firstTime && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} 
-                onClick={toggle}>
-                    &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
-                </button>
-                <button className={`button fa fa-backward`} onClick={()=> Backward()}></button>
-                <button className={`button fa fa-forward`} onClick={()=> Forward()}></button>
-                <button className={`button search ${!checkedState.includes(true)   && 'disabled'}`} onClick={() => search()}>
-                    <i className={`fa fa-search`}></i> Search</button> 
-            </div>
         </div>
         <div className={`filterGroup ${autoDisplayIsActive && 'disabled hidden'  }  display=hidden`}>
             {data.map((list, index) =>    

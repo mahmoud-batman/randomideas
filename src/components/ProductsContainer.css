@@ -4,14 +4,21 @@
     justify-content: center;
     align-content: center;
     gap : 20px 10px;*/
-    gap : 2rem 2rem;
+    /* gap : 2rem 2rem;
     padding: 10px; 
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 5rem;
+    margin-bottom: 5rem; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin : 1rem 3rem;
+    border: solid white;
+    border-radius: 10px;
 
   }
 
@@ -105,23 +112,22 @@
 
 .productsContainer{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
-    min-height: 50vh;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(252, 252, 252);
-    margin: 10px;
-    border: 2px solid wheat;
+    border: 2px solid DodgerBlue;
     border-radius: 10px;
+    min-height: 50vh;
 }
 
 /* .productsContainer{
- display: grid;
- grid-template: auto / 50fr 50fr ;
- justify-content: center;
- align-content: center;
- min-height: 70vh;
-} */
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr ;
+  grid-template-rows: 1fr ;
+  height: 80vh;
+  } */
 
 .button {
   text-align: center;
@@ -186,10 +192,10 @@ input[type=number] {
 
 .timer{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
   color: #00ff22;
   margin-top: 2rem;
-  width: 10rem;
+  /* flex-wrap: wrap; */
+  width: 20rem;
 }

@@ -6,10 +6,12 @@ import getRandomInt from 'utils/getRandomInt';
 export default function ProductsContainer({data}) {
     const [autoDisplayIsActive, setAutoDisplayIsActive] = useState(false);
     const [firstTime, setFirstTime] = useState(true);
+    const [searchClicked, setSearchClicked] = useState(false);
     const [timer, setTimer] = useState(1);
-    let [seconds, setSeconds] = useState(1);
-    let [repeat, setRepeat] = useState(1);
-
+    const [seconds, setSeconds] = useState(1);
+    const [repeat, setRepeat] = useState(1);
+    const [savedData, setSavedData] = useState([]);
+    let [page, setPage] = useState(1);
     // To create an array equal to the length of the number of categoryItems
     const [categoryItems, setCategoryItems] = useState([]);
     // const [categoryItems, setCategoryItems] = useState(new Array(data.length).fill([]));
@@ -57,15 +59,42 @@ export default function ProductsContainer({data}) {
             )
             randomNumList = []      
         }
-        
         return randomItemsList.flat(1)
     }
-
+ 
     function search () {
-        setCategoryItems(randomItems())
+        let items = randomItems()
+        setCategoryItems(items)
+        saveData(items)
         setFirstTime(false)
+        setSearchClicked(true)
+        setPage(1)
     }
 
+    function saveData (data) {
+        if(savedData.length >= 20) {
+            savedData.shift()
+        }
+        setSavedData(savedData.concat([data]))
+    }
+
+    function Backward() {
+        setSearchClicked(true)
+        if(parseInt(page) < savedData.length) {
+            setPage(page += 1)
+            setCategoryItems(savedData[savedData.length - page])
+        }
+    }
+
+    function Forward() {
+        setSearchClicked(true)
+
+        if(parseInt(page) > 1) {
+            setPage(page -= 1)
+            setCategoryItems(savedData[savedData.length - page])
+        }
+    }
+    
     function resetFilter () {
         resetFilter = new Array(data.length).fill(false)
         setCheckedState(resetFilter)
@@ -90,13 +119,10 @@ export default function ProductsContainer({data}) {
         setRepeat(e.target.value);
     }
 
-    
     useEffect(() => {
-        let interval = null;
         let secondInterval = null
         let s = seconds
         setSeconds(s)
-        
         if(autoDisplayIsActive){
             secondInterval = setInterval(() => {
 
@@ -109,13 +135,18 @@ export default function ProductsContainer({data}) {
                 setSeconds(s)
             }, 1000)
 
+            if(searchClicked) {
+                s = 1
+                setSeconds(s)
+                setSearchClicked(false)
+            }
         }
+        
         return () =>{ 
-            clearInterval(interval)
             clearInterval(secondInterval)
         };
         
-    }, [autoDisplayIsActive])
+    }, [searchClicked, autoDisplayIsActive ])
 
     return (
         
@@ -127,7 +158,7 @@ export default function ProductsContainer({data}) {
         </div>
         <div className="buttonsContainer">
 
-        <div className="timer">
+            <div className="timer">
                 <input className={`${autoDisplayIsActive && 'disabled'}`}
                 id='timer'
                 name='timer'
@@ -153,14 +184,13 @@ export default function ProductsContainer({data}) {
                 <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
                 ${firstTime && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} 
                 onClick={toggle}>
-                    {console.log()}
                     &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
                 </button>
-                
+                <button className={`button fa fa-backward`} onClick={()=> Backward()}></button>
+                <button className={`button fa fa-forward`} onClick={()=> Forward()}></button>
+                <button className={`button search ${!checkedState.includes(true)   && 'disabled'}`} onClick={() => search()}>
+                    <i className={`fa fa-search`}></i> Search</button> 
             </div>
-            
-            <button className={`button search ${autoDisplayIsActive  && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} onClick={() => search()}>
-                <i className="fa fa-search "></i> Search</button> 
         </div>
         <div className={`filterGroup ${autoDisplayIsActive && 'disabled hidden'  }  display=hidden`}>
             {data.map((list, index) =>    

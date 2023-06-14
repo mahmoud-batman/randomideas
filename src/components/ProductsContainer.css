@@ -126,7 +126,7 @@
 .button {
   text-align: center;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 4px 1rem;
   border-radius: 16px;
   background-color: DodgerBlue; /* Blue background */
   border: none; /* Remove borders */
@@ -173,6 +173,7 @@
   min-width: 200px;
   justify-content: center;
   align-content: center;
+  width: 50%;
 }
 
 input[type=number] {
@@ -187,8 +188,8 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
   align-items: center;
   color: #00ff22;
   margin-top: 2rem;
+  width: 10rem;
 }

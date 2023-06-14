@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import './ProductsContainer.css';
 import ProductBox from './ProductBox';
 import getRandomInt from 'utils/getRandomInt';
+import logo from 'data/giphy.gif';
 
 export default function ProductsContainer({data}) {
     const [autoDisplayIsActive, setAutoDisplayIsActive] = useState(false);
@@ -152,9 +153,12 @@ export default function ProductsContainer({data}) {
         
         <>
         <div className="productsContainer"> 
-            { categoryItems.length > 0 &&  categoryItems.map(
+            { 
+            categoryItems.length > 0 ? categoryItems.map(
                 item => <ProductBox key={item.id} item = {item} />
-            )}
+            ) : 
+                <img style={{maxHeight:"50%", maxWidth:"100%"}} src={logo} alt="loading..." />
+            }
         </div>
         
         <div className="buttonsContainer">

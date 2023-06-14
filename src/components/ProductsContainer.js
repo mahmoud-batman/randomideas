@@ -133,7 +133,6 @@ export default function ProductsContainer({data}) {
                 name='timer'
                 type='number' 
                 min = '1'
-                max = '10'
                 value = {timer}
                 onChange={(e) => onTimer(e)}
                 />
@@ -144,7 +143,6 @@ export default function ProductsContainer({data}) {
                     name='repeat'
                     type='number'
                     min = '1' 
-                    max = '3'
                     value = {repeat}
                     onChange={(e) => onRepeat(e)}
                 />                
@@ -153,7 +151,7 @@ export default function ProductsContainer({data}) {
            
             <div className='timerContainer'>
                 <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
-                ${firstTime && 'disabled'}`} 
+                ${firstTime && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} 
                 onClick={toggle}>
                     {console.log()}
                     &nbsp;{autoDisplayIsActive ? 'Pause' : 'Start'}
@@ -161,7 +159,7 @@ export default function ProductsContainer({data}) {
                 
             </div>
             
-            <button className={`button search ${autoDisplayIsActive && 'disabled'}`} onClick={() => search()}>
+            <button className={`button search ${autoDisplayIsActive  && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} onClick={() => search()}>
                 <i className="fa fa-search "></i> Search</button> 
         </div>
         <div className={`filterGroup ${autoDisplayIsActive && 'disabled hidden'  }  display=hidden`}>

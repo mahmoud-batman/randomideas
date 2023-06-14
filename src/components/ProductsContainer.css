@@ -17,9 +17,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin : 1rem 3rem;
-    border: solid white;
+    border: 0.2rem solid var(--color-1);
     border-radius: 10px;
-
+    background-color: var(--color-checked);
   }
 
 /* Customize the label (the container) */
@@ -59,18 +59,17 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
-    
+    background-color: var(--color-1);
   }
   
   /* On mouse-over, add a grey background color */
   .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--color-hover);
   }
   
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: var(--color-checked);
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -92,7 +91,7 @@
     top: 5px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid ;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -115,9 +114,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgb(252, 252, 252);
-    border: 2px solid DodgerBlue;
-    border-radius: 10px;
+    background-color: var(--color-background);
+    /* background-color: rgb(252, 252, 252); */
+    /* border: 0.2rem solid var(--color-1); */
+    border-radius: 1rem;
     min-height: 50vh;
 }
 
@@ -134,9 +134,8 @@
   text-decoration: none;
   margin: 4px 1rem;
   border-radius: 16px;
-  background-color: DodgerBlue; /* Blue background */
+  background-color: var(--color-1); /* Blue background */
   border: none; /* Remove borders */
-  color: white; /* White text */
   padding: 12px 16px; /* Some padding */
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
@@ -145,11 +144,11 @@
 }
 
 .button.search{
-  background-color: rgba(30, 255, 105, 0.5); /* Blue background */
+  background-color: var(--color-checked); /* Blue background */
 }
 
 .button:hover{
-    background-color: rgb(32, 178, 170);
+    background-color: var(--color-hover);
     cursor: pointer;
     color: black;
 }
@@ -186,16 +185,15 @@ input[type=number] {
   font-size: 18pt;
   width : 90%;
   height : 90%;
-  margin-left: 2rem;
+  margin: 0.5rem;
   border-radius: 10px;
+  border: 0.2rem solid var(--color-1);
 } 
 
 .timer{
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #00ff22;
-  margin-top: 2rem;
-  /* flex-wrap: wrap; */
+  margin: 0.5rem 0.5rem 1.5rem 2.5rem;
   width: 20rem;
 }

@@ -9,25 +9,31 @@ a {
     justify-content: center;
     align-items: center;
     align-content: center;
-    background-color: rgba(32, 178, 170);
+    background-color: var(--color-checked);
     border-radius: 10px;
-    border : 1px solid black;
     transition: background-color  0.2s , border  0.2s;
     position : relative;
-    max-width: 50%;
+    max-width: 30%;
+    min-width: 20rem;
+    margin: 0.5rem;
 }
 
+@media screen and (max-width:1000px) {
+    .productBox{
+        min-width: 11rem;
+    }
+  }
+
 .productBox:hover{
-    background-color: rgba(32, 178, 170, 0.5);
-    border : 1px dashed lightseagreen;
+    background-color:  var(--color-hover);
 }
 
 .productImage {
-    margin-top: 0.5rem;
     border-radius: 10px;
     width: 100%;
     object-fit: cover;
-    border: 1px dotted black;
+    border : 1px solid var(--color-hover);
+    /* border: 1px dotted black; */
 }
 
 .ribbon {
@@ -38,19 +44,17 @@ a {
     padding: 0.1rem 0.5rem;
     text-align: center;
     border-radius: 25px;
-    background-color: #ff9800;
-    color: white;
+    background-color: var(--color-hover);
+    color: black;
 }
 
 .productText {
-    /* width: 100%; */
-    width: 100pt;
+    width: 100%;
     white-space: nowrap;
+    font-size: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
     color :rgb(0, 0, 0);
-    background-color: #ffffff;
     border-radius: 25px;
     padding: 0.1rem 0.5rem;
-    font-size: 1rem;
 } 

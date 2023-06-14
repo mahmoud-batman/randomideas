@@ -1,11 +1,29 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+:root {
+  --color-1 : #cdb4db; 
+  --color-hover : #ffc8dd; 
+  --color-3 : #ffafcc; 
+  --color-background : #bde0fe; 
+  --color-checked : #a2d2ff; 
+}
+
 .App {
-  /* text-align: center; */
   height: 100vh;
 }
 
 .App-header {
-  background-color: rgba(0,0,0,.8);
   min-height: 100vh;
-  color: white;
+  background-color: var(--color-background);
+
 }
 
+/* 
+1 : cdb4db
+2 : ffc8dd
+2 : ffafcc
+2 : bde0fe
+2 : a2d2ff
+*/

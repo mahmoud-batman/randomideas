@@ -37,9 +37,11 @@ export default function ProductsContainer({data}) {
     }
 
     const categoryCheckedItems = () => {
-        return data.filter(obj => categoryChecked().includes(obj.category)).map(
-            category => (
-                category.items
+
+        return data.filter(obj => categoryChecked().includes(obj.category)) // return categories
+        .map(category => (
+            category.items
+            .map(item => ({...item, category : category.category}))
             )
         )
     }
@@ -149,22 +151,22 @@ export default function ProductsContainer({data}) {
         
     }, [searchClicked, autoDisplayIsActive ])
 
+
     return (
         
         <>
         <div className="productsContainer"> 
             { 
             categoryItems.length > 0 ? categoryItems.map(
-                item => <ProductBox key={item.id} item = {item} />
+                (item) => (
+                <ProductBox key={item.id} item = {item} 
+                />)
             ) : 
                 <img style={{maxHeight:"50%", maxWidth:"100%"}} src={logo} alt="loading..." />
             }
         </div>
         
         <div className="buttonsContainer">
-
-            
-           
             <div className='timerContainer'>
                 <button  className={`button  fa fa-${autoDisplayIsActive ?  'pause-circle ': 'play-circle search' } 
                 ${firstTime && 'disabled'} ${!checkedState.includes(true)   && 'disabled'}`} 

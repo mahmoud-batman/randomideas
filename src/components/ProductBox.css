@@ -16,6 +16,7 @@ a {
     max-width: 30%;
     min-width: 15rem;
     margin: 0.5rem;
+    font-size: 0.7rem;
 }
 
 @media screen and (min-width:700px) and (max-width:1000px) {
@@ -56,23 +57,39 @@ a {
 
 .ribbon {
     position: absolute;
-    top: 1rem;
-    left:1rem;
-    font-size: 1rem;
+    top: 2rem;
+    left:5%;
+    /* font-size: 0.7rem; */
     padding: 0.1rem 0.5rem;
     text-align: center;
     border-radius: 25px;
     background-color: var(--color-hover);
     color: black;
+    border : 1px solid var(--color-checked);
+
+    width: 3rem;
+}
+
+.ribbon.category {
+    width: 4.5rem;
+    top: 0.5rem;
+    background-color: var(--color-hover);
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .productText {
-    width: 100%;
+    position: absolute;
+    top: 80%;
+    background-color: var(--color-hover);
+    width: 90%;
     white-space: nowrap;
-    font-size: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
     color :rgb(0, 0, 0);
     border-radius: 25px;
     padding: 0.1rem 0.5rem;
+    border : 1px solid var(--color-checked)
 } 
